@@ -18,11 +18,11 @@ public:
     dout << "FLOPS3::" << "        + Position/Size Status Display\n";
     wndFlopStatus_->setPosition( 10, 180 );
     wndFlopStatus_->setExtent( 300, 10 );
+	wndFlopStatus_->setBorderWidth( 1 );
 
     
     dout  << "FLOPS3::" << "        + init main display window.\n";
     wndFlops_->init();
-
 	
 	wndFlopStatus_->setParent( wndFlops_ );
 	
