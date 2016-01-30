@@ -13,44 +13,39 @@ PLATFORMLIBS= lib/libgh-armhf-x.a lib/libghpc-armhf-x.a -lX11
 FLAGREL= -DNDEBUG -O2
 FLAGDBG= -Wall -g
 
-all: flops_bin
-#	@echo -n "    "	
-#	@cp -fv ../flops ../../bin/
+all: flops$(PLATFORMEXT)
 
-all_debug: flops_debug
-#	@echo -n "    "	
-#	@cp -fv ../flopsdbg ../../bin/
 
-all_debug_deep: flops_debug_deep
-#	@echo -n "    "	
-#	@cp -fv ../flopsdbg_deep ../../bin/
+all_debug: flops.d$(PLATFORMEXT)
 
-all_debug_deep_verbose: flops_debug_deep_verbose
-#	@echo -n "    "
-#	@cp -fv ../flopsdbg_deep_v ../../bin/
+
+all_debug_deep: flops.dd$(PLATFORMEXT)
+
+
+all_debug_deep_verbose: flops.ddv$(PLATFORMEXT)
 
 
 getdep:
 	@make -C dep/
 
 
-flops_bin:
+flops$(PLATFORMEXT):
 	@echo -n "    "
 	g++ $(FLAGREL) -o flops$(PLATFORMEXT) flops.cpp $(PLATFORMLIBS)
 	
-flops_debug:
+flops.d$(PLATFORMEXT):
 	@echo -n "    "
-	g++ $(FLAGDBG) -o flopsdbg$(PLATFORMEXT) flops.cpp $(PLATFORMLIBS)
+	g++ $(FLAGDBG) -o flops.d$(PLATFORMEXT) flops.cpp $(PLATFORMLIBS)
 
 #TODO
-flops_debug_deep:
+flops.dd$(PLATFORMEXT):
 	@echo -n "    "
-	g++ $(FLAGDBG) -o flopsdbg_deep$(PLATFORMEXT) flops.cpp $(PLATFORMLIBS)
+	g++ $(FLAGDBG) -o flops.dd$(PLATFORMEXT) flops.cpp $(PLATFORMLIBS)
 
 #TODO
-flops_debug_deep_verbose:
+flops.ddv$(PLATFORMEXT):
 	@echo -n "    "
-	g++ $(FLAGDBG) -o flopsdbg_deep_v$(PLATFORMEXT) flops.cpp $(PLATFORMLIBS)
+	g++ $(FLAGDBG) -o flops.ddv$(PLATFORMEXT) flops.cpp $(PLATFORMLIBS)
 	
 cleandep:
 	@make -C dep/ clean

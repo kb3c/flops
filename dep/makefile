@@ -11,7 +11,7 @@ pre_all:
 dep_libgh:
 	@git clone https://github.com/kb3c/libgh
 	@make -C libgh/ prepare
-	@cp -f libgh/1.1/*.a ../lib/
+	@cp -f libgh/1.1.1.2/*.a ../lib/
 	@cp -f libgh/gh.h ../gh/
 	@cp -f libgh/gh.hpp ../gh/
 	
