@@ -1,0 +1,11 @@
+=README
+2016jan30:gsh
+
+== Important
+Make sure you get the dependencies before building!
+
+$ make getdep && make
+
+Make sure you clean the dependencies before pushing!
+
+$ make cleandep

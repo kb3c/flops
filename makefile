@@ -1,56 +1,58 @@
 ## flopsss makefile
-# 2010-2016, polarysekt
+## 2010-2016, polarysekt
 
-
-#FLOPSSSARCH=armhf
-#FLOPSSSPLAT=x
+FLOPSSSARCH= armhf
+FLOPSSSPLAT= x
 PLATFORMEXT= .out
 #PLATFORMEXT= .exe
 
-PLATFORMLIBS= lib/libgh-armhf-x.a lib/libghpc-armhf-x.a -lX11
+GHVER= 1-1-1-4
+GHPCVER= 0-1
+
+PLATFORMLIBS= lib/libgh-$(FLOPSSSARCH)-$(FLOPSSSPLAT)-$(GHVER).a lib/libghpc-armhf-x.a -lX11
 #PLATFORMDLIBS=
 #PLATFORMVLIBS=
 FLAGREL= -DNDEBUG -O2
 FLAGDBG= -Wall -g
 
-all: flops_bin
-#	@echo -n "    "	
-#	@cp -fv ../flops ../../bin/
+# .PHONY(s)
 
-all_debug: flops_debug
-#	@echo -n "    "	
-#	@cp -fv ../flopsdbg ../../bin/
+.PHONY: all
 
-all_debug_deep: flops_debug_deep
-#	@echo -n "    "	
-#	@cp -fv ../flopsdbg_deep ../../bin/
 
-all_debug_deep_verbose: flops_debug_deep_verbose
-#	@echo -n "    "
-#	@cp -fv ../flopsdbg_deep_v ../../bin/
+all: flops$(PLATFORMEXT)
+
+
+all_debug: flops.d$(PLATFORMEXT)
+
+
+all_debug_deep: flops.dd$(PLATFORMEXT)
+
+
+all_debug_deep_verbose: flops.ddv$(PLATFORMEXT)
 
 
 getdep:
 	@make -C dep/
 
 
-flops_bin:
+flops$(PLATFORMEXT):
 	@echo -n "    "
 	g++ $(FLAGREL) -o flops$(PLATFORMEXT) flops.cpp $(PLATFORMLIBS)
 	
-flops_debug:
+flops.d$(PLATFORMEXT):
 	@echo -n "    "
-	g++ $(FLAGDBG) -o flopsdbg$(PLATFORMEXT) flops.cpp $(PLATFORMLIBS)
+	g++ $(FLAGDBG) -o flops.d$(PLATFORMEXT) flops.cpp $(PLATFORMLIBS)
 
 #TODO
-flops_debug_deep:
+flops.dd$(PLATFORMEXT):
 	@echo -n "    "
-	g++ $(FLAGDBG) -o flopsdbg_deep$(PLATFORMEXT) flops.cpp $(PLATFORMLIBS)
+	g++ $(FLAGDBG) -o flops.dd$(PLATFORMEXT) flops.cpp $(PLATFORMLIBS)
 
 #TODO
-flops_debug_deep_verbose:
+flops.ddv$(PLATFORMEXT):
 	@echo -n "    "
-	g++ $(FLAGDBG) -o flopsdbg_deep_v$(PLATFORMEXT) flops.cpp $(PLATFORMLIBS)
+	g++ $(FLAGDBG) -o flops.ddv$(PLATFORMEXT) flops.cpp $(PLATFORMLIBS)
 	
 cleandep:
 	@make -C dep/ clean
