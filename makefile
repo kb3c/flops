@@ -1,17 +1,24 @@
 ## flopsss makefile
-# 2010-2016, polarysekt
+## 2010-2016, polarysekt
 
-
-#FLOPSSSARCH=armhf
-#FLOPSSSPLAT=x
+FLOPSSSARCH= armhf
+FLOPSSSPLAT= x
 PLATFORMEXT= .out
 #PLATFORMEXT= .exe
 
-PLATFORMLIBS= lib/libgh-armhf-x.a lib/libghpc-armhf-x.a -lX11
+GHVER= 1-1-1-4
+GHPCVER= 0-1
+
+PLATFORMLIBS= lib/libgh-$(FLOPSSSARCH)-$(FLOPSSSPLAT)-$(GHVER).a lib/libghpc-armhf-x.a -lX11
 #PLATFORMDLIBS=
 #PLATFORMVLIBS=
 FLAGREL= -DNDEBUG -O2
 FLAGDBG= -Wall -g
+
+# .PHONY(s)
+
+.PHONY: all
+
 
 all: flops$(PLATFORMEXT)
 
