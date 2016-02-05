@@ -2,7 +2,7 @@
 ## 2016:gsh
 
 
-LIBGHVER= 1.1.1.4
+LIBGHVER= 1.1.1.5
 LIBGHPCVER= 0.1
 
 all: pre_all dep_libgh dep_libghpc
@@ -14,14 +14,14 @@ pre_all:
 
 
 dep_libgh:
-	@git clone https://github.com/kb3c/libgh
+#	@git clone https://github.com/kb3c/libgh
 	@make -C libgh/ prepare
 	@cp -f libgh/$(LIBGHVER)/*.a ../lib/
 	@cp -f libgh/gh.h ../gh/
 	@cp -f libgh/gh.hpp ../gh/
 	
 dep_libghpc:
-	@git clone https://github.com/kb3c/libghpc
+#	@git clone https://github.com/kb3c/libghpc
 	@make -C libghpc/ prepare
 	@cp -f libghpc/$(LIBGHPCVER)/*.a ../lib/
 	@cp -f libghpc/ghpc.h ../gh/
