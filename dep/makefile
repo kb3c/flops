@@ -28,7 +28,7 @@ dep_libghpc:
 	-git clone https://github.com/kb3c/libghpc
 	make -C libghpc/ prepare
 	cp -f libghpc/$(LIBGHPCVER)/*.a ../lib/
-	cp -f libghpc/ghpc.h* ../gh/
+	cp -f libghpc/$(LIBGHPCVER)/ghpc.h* ../gh/
 	
 #CAREFUL!
 #clean:
