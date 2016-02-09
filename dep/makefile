@@ -8,7 +8,7 @@
 # simplify libs copying
 
 LIBGHVER= 1.1.3.1
-LIBGHPCVER= 0.1
+LIBGHPCVER= 0.3.3
 
 all: pre_all dep_libgh dep_libghpc
 
